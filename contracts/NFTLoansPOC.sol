@@ -78,7 +78,7 @@ contract NFTLoansPOC {
      * @param id - the NFT id
      * @returns the NFT value
      */
-    function getNFTValue(address token, uint id) public pure returns(uint) {
+    function getNFTValue(address token, uint id) public pure returns (uint) {
         return 1 ether;
     }
 
@@ -86,7 +86,7 @@ contract NFTLoansPOC {
      * @dev gets the collateralization ratio
      * @returns the collateralization ratio, 1e18 == 100%
      */
-    function getCollateralisationRatio() public pure returns(uint) {
+    function getCollateralisationRatio() public pure returns (uint) {
         return 0.5 ether;
     }
 

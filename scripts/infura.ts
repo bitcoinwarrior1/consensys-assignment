@@ -1,16 +1,76 @@
 import { ethers } from "hardhat";
 
+import { NFTLoansPOC, NFTLoansPOC__factory } from "../typechain-types";
+
+/*
+ * @dev deploys the contract
+ * @dev infura can be used as the node to broadcast this transaction
+ * @returns the nftLoansContract
+ * */
 async function main() {
-  const mockNFTLoans = await ethers.deployContract("MockNFTLoans", []);
-  await mockNFTLoans.waitForDeployment();
-  return mockNFTLoans;
+  const signers = await ethers.getSigners();
+  await logUserBalance(signers[0].address);
+  const nftLoansContract = await new NFTLoansPOC__factory()
+    .connect(signers[0])
+    .deploy();
+  await nftLoansContract.waitForDeployment();
+
+  return nftLoansContract;
 }
 
-// We recommend this pattern to be able to use async/await everywhere
-// and properly handle errors.
-main().then((mockNFTLoans) => {
+/*
+ * @dev read the signers balance from a node and log it
+ * @dev infura can be used as the node to get this data
+ * @dev this data can be used on the client's web app
+ * */
+async function logUserBalance(signerAddress: string) {
+  const userBalance = await ethers.provider.getBalance(signerAddress);
+  console.log(`User's native balance ${ethers.formatEther(userBalance)}\n`);
+}
 
-}).catch((error) => {
-  console.error(error);
-  process.exitCode = 1;
-});
+/*
+ * @dev log all the smart contract events that have been emitted
+ * @dev infura can be used as the node to get this data
+ * @dev these events can be used to populate data on the web application
+ * @param nftLoansContract - the nftLoansPOC contract
+ * @returns the nftLoansContract
+ * */
+async function logEvents(nftLoansContract: NFTLoansPOC) {
+  console.log(nftLoansContract.getEvent("LendTokenAdded"));
+  console.log(nftLoansContract.getEvent("LendTokenRemoved"));
+  console.log(nftLoansContract.getEvent("NFTAdded"));
+  console.log(nftLoansContract.getEvent("NFTRemoved"));
+  console.log(nftLoansContract.getEvent("LoanCreated"));
+}
+
+/*
+ * @dev create a fake loan via the NFTLoansPOC contract
+ * @dev infura can be used as the node to broadcast this transaction
+ * @dev these events can be used to populate data on the web application
+ * @param nftLoansContract - the nftLoansPOC contract
+ * @returns the nftLoansContract
+ * */
+async function createLoan(nftLoansContract: NFTLoansPOC) {
+  await nftLoansContract.createLoan(
+    ethers.ZeroAddress,
+    ethers.MaxUint256,
+    ethers.ZeroAddress,
+    ethers.MaxUint256,
+    ethers.ZeroAddress,
+    ethers.ZeroAddress
+  );
+
+  return nftLoansContract;
+}
+
+main()
+  .then((mockNFTLoans) => {
+    return createLoan(mockNFTLoans);
+  })
+  .then((mockNFTLoans) => {
+    return logEvents(mockNFTLoans);
+  })
+  .catch((error) => {
+    console.error(error);
+    process.exitCode = 1;
+  });
