@@ -52,7 +52,7 @@ Low fee chains:
 - Polygon
 - Linea
 
-Consensys is the creator of Linea, a high throughput EVM chain that uses rollups. The client may or may not use this chain, depending on which one has the most liquidity for the intended userbase.  
+Consensys is the creator of Linea, a high throughput zkEVM chain that uses rollups. The client may or may not use this chain, depending on which one has the most liquidity for the intended userbase.  
 
 #### Decentralisation
 How important is decentralisation for your product? Often times, EVM chains that offer low fees have done so at the expense of decentralisation. 
