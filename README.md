@@ -25,41 +25,6 @@ The client needs a web app that:
 
 Consensys does not provide services to build the smart contract or web app, instead we provide tools to make your dApp function.
 
-## Network selection
-The client has not specified which EVM chain they wish to use. When considering the right chain, it is important to consider the following.
-
-#### Liquidity
-Which chain has the most liquidity for the `NFTs` and `ERC20` tokens you plan to support? The chain with the highest liquidity is the best choice, as there will be more funds available. 
-
-High liquidity chains:
-- Ethereum mainnet
-- Arbitrum
-
-Low liquidity chains:
-- xDAI
-- Polygon
-
-Infura supports all major EVM chains. 
-
-#### Fees
-How sensitive is your userbase to fees? High value loans and `NFTs` will be fee insensitive, while lower value loans and `NFTs` will be more sensitive to fees. The mainnet network typically has the highest fees, and the most transaction volume. 
-
-High fee chains:
-- Ethereum mainnet
-
-Low fee chains:
-- Arbitrum
-- Polygon
-- Linea
-
-Consensys is the creator of Linea, a high throughput zkEVM chain that uses rollups. The client may or may not use this chain, depending on which one has the most liquidity for the intended userbase.  
-
-#### Decentralisation
-How important is decentralisation for your product? Often times, EVM chains that offer low fees have done so at the expense of decentralisation. 
-
-#### Confirmation times 
-Do you expect that your dApp will handle a high or low volume of transactions? The higher the volume, the more sensitive to confirmation times.
-
 ## Services that Consensys can provide 
 
 #### Infura 
@@ -96,3 +61,38 @@ Snaps can do the following for the client:
 
 #### Fuzzing
 Consensys has a fuzzing tool that helps you find vulnerabilities in your smart contracts. You can read more about it [here](https://consensys.io/diligence/fuzzing/).
+
+## Network selection
+The client has not specified which EVM chain they wish to use. When considering the right chain, it is important to consider the following.
+
+#### Liquidity
+Which chain has the most liquidity for the `NFTs` and `ERC20` tokens you plan to support? The chain with the highest liquidity is the best choice, as there will be more funds available.
+
+High liquidity chains:
+- Ethereum mainnet
+- Arbitrum
+
+Low liquidity chains:
+- xDAI
+- Polygon
+
+Infura supports all major EVM chains.
+
+#### Fees
+How sensitive is your userbase to fees? High value loans and `NFTs` will be fee insensitive, while lower value loans and `NFTs` will be more sensitive to fees. The mainnet network typically has the highest fees, and the most transaction volume.
+
+High fee chains:
+- Ethereum mainnet
+
+Low fee chains:
+- Arbitrum
+- Polygon
+- Linea
+
+Consensys is the creator of Linea, a high throughput zkEVM chain that uses rollups. The client may or may not use this chain, depending on which one has the most liquidity for the intended userbase.  
+
+#### Decentralisation
+How important is decentralisation for your product? Often times, EVM chains that offer low fees have done so at the expense of decentralisation.
+
+#### Confirmation times
+Do you expect that your dApp will handle a high or low volume of transactions? The higher the volume, the more sensitive to confirmation times.
