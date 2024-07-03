@@ -3,7 +3,8 @@
   "scripts": {
     "infura-hardhat": "npx hardhat run scripts/infura.ts --network hardhat",
     "infura-mainnet": "npx hardhat run scripts/infura.ts --network mainnet",
-    "infura-arbitrum": "npx hardhat run scripts/infura.ts --network arbitrumOne"
+    "infura-arbitrum": "npx hardhat run scripts/infura.ts --network arbitrumOne",
+    "test": "npx hardhat test"
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^4.0.0",

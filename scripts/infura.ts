@@ -29,18 +29,16 @@ async function logUserBalance(signerAddress: string) {
 }
 
 /*
- * @dev log all the smart contract events that have been emitted
+ * @dev example of logging smart contract events
  * @dev infura can be used as the node to get this data
  * @dev these events can be used to populate data on the web application
  * @param nftLoansContract - the nftLoansPOC contract
  * @returns the nftLoansContract
  * */
 async function logEvents(nftLoansContract: NFTLoansPOC) {
-  console.log(nftLoansContract.getEvent("LendTokenAdded"));
-  console.log(nftLoansContract.getEvent("LendTokenRemoved"));
-  console.log(nftLoansContract.getEvent("NFTAdded"));
-  console.log(nftLoansContract.getEvent("NFTRemoved"));
-  console.log(nftLoansContract.getEvent("LoanCreated"));
+  const filter = nftLoansContract.filters.LendTokenAdded;
+  let events = await nftLoansContract.queryFilter(filter);
+  console.log(events);
 }
 
 /*
